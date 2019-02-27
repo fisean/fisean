@@ -1,0 +1,19 @@
+PREFIX ?= /usr/local
+
+all: $(PROGRAM)
+
+$(PROGRAM): $(OBJECTS)
+	@echo -n "Linking $(PROGRAM) ... "
+	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(PROGRAM) $(LDFLAGS)
+	@echo "done"
+
+.cpp.o:
+	@echo -n "$< ... "
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "done"
+
+install:
+	install -m 0755 $(PROGRAM) $(DESTDIR)$(PREFIX)/bin
+
+clean:
+	rm -rf $(OBJECTS) $(PROGRAM)

@@ -1,0 +1,1 @@
+CXXFILES != ls -1 src/*.cpp

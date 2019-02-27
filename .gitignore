@@ -1,0 +1,13 @@
+*.o
+*.so
+.provisioned
+ansible/group_vars/all
+ansible/inventory/inventory
+ansible/roles/*
+ansible/site.yml
+!ansible/roles/.keep
+build/
+cbsd.conf
+site.retry
+vars.mk
+matrix-client/matrix-client

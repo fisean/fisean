@@ -1,0 +1,1 @@
+CXXFILES = $(wildcard src/*.cpp)

@@ -1,0 +1,7 @@
+PROGRAM = matrix-client
+OBJECTS = $(CXXFILES:.cpp=.o)
+CXXFLAGS != fltk-config --cxxflags
+CXXFLAGS += -I . -std=c++14
+CURLPP_LDFLAGS != curlpp-config --libs
+LDFLAGS != fltk-config --ldflags
+LDFLAGS += $(CURLPP_LDFLAGS)
