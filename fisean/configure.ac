@@ -1,0 +1,46 @@
+AC_INIT(src/config.cpp)
+
+FISEAN_MAJOR_VERSION=0
+AC_SUBST(MAOLAN_MAJOR_VERSION)
+
+FISEAN_MINOR_VERSION=0
+AC_SUBST(MAOLAN_MINOR_VERSION)
+
+FISEAN_PATCH_VERSION=1
+AC_SUBST(MAOLAN_PATCH_VERSION)
+
+CC="${CC:=}"
+AC_SUBST(CC)
+
+CXX="${CXX:=}"
+AC_SUBST(CXX)
+
+CFLAGS="${CFLAGS:=}"
+AC_SUBST(CFLAGS)
+
+CPPFLAGS="${CPPFLAGS:=}"
+AC_SUBST(CPPFLAGS)
+
+CXXFLAGS="${CXXFLAGS:=}"
+AC_SUBST(CXXFLAGS)
+
+LDFLAGS="${LDFLAGS:=}"
+AC_SUBST(LDFLAGS)
+
+AC_PROG_CC
+AC_PROG_CXX
+AC_PROG_CXXCPP
+
+# AC_CHECK_HEADER(
+  # sndfile.h,
+  # [],
+  # AC_MSG_ERROR([Could not find sndfile.h])
+# )
+# AC_CHECK_LIB(
+  # sndfile,
+  # sf_open,
+  # [],
+  # AC_MSG_ERROR([Could not find libsnd])
+# )
+
+AC_OUTPUT(makeinclude.configured)
