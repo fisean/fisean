@@ -1,4 +1,4 @@
-AC_INIT(src/config.cpp)
+AC_INIT(src/fisean.cpp)
 
 FISEAN_MAJOR_VERSION=0
 AC_SUBST(FISEAN_MAJOR_VERSION)
@@ -8,6 +8,8 @@ AC_SUBST(FISEAN_MINOR_VERSION)
 
 FISEAN_PATCH_VERSION=1
 AC_SUBST(FISEAN_PATCH_VERSION)
+
+AC_LANG([C++])
 
 CC="${CC:=}"
 AC_SUBST(CC)
@@ -30,16 +32,12 @@ AC_SUBST(LDFLAGS)
 AC_PROG_CC
 AC_PROG_CXX
 
-# AC_CHECK_HEADER(
-  # sndfile.h,
-  # [],
-  # AC_MSG_ERROR([Could not find sndfile.h])
-# )
-# AC_CHECK_LIB(
-  # sndfile,
-  # sf_open,
-  # [],
-  # AC_MSG_ERROR([Could not find libsnd])
-# )
+
+AC_CHECK_HEADER(
+  curlpp/cURLpp.hpp,
+  [],
+  AC_MSG_ERROR([Could not find curlpp/cURLpp.hpp])
+)
 
 AC_OUTPUT(makeinclude.configured)
+AC_OUTPUT(fisean/config.h)
