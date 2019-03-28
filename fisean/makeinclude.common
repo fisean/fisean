@@ -1,4 +1,4 @@
-PROGRAM = matrix-client
+PROGRAM = fisean
 OBJECTS = $(CXXFILES:.cpp=.o)
 CXXFLAGS != fltk-config --cxxflags
 CXXFLAGS += -I . -std=c++14

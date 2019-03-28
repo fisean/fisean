@@ -4,7 +4,7 @@ all: $(PROGRAM)
 
 $(PROGRAM): $(OBJECTS)
 	@echo -n "Linking $(PROGRAM) ... "
-	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(PROGRAM) $(LDFLAGS)
+	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o src/$(PROGRAM) $(LDFLAGS)
 	@echo "done"
 
 .cpp.o:
@@ -13,7 +13,10 @@ $(PROGRAM): $(OBJECTS)
 	@echo "done"
 
 install:
-	install -m 0755 $(PROGRAM) $(DESTDIR)$(PREFIX)/bin
+	install -m 0755 src/$(PROGRAM) $(DESTDIR)$(PREFIX)/bin
 
 clean:
-	rm -rf $(OBJECTS) $(PROGRAM)
+	rm -rf $(OBJECTS) src/$(PROGRAM)
+
+distclean: clean
+	rm -rf config.log config.status configure makeinclude.configured
