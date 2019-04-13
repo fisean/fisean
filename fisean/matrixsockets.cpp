@@ -33,11 +33,11 @@ int main()
   }
   catch (curlpp::RuntimeError &e)
   {
-    std::cout << e.what() << std::endl;
+    std::cerr << e.what() << std::endl;
   }
   catch (curlpp::LogicError &e)
   {
-    std::cout << e.what() << std::endl;
+    std::cerr << e.what() << std::endl;
   }
 
   return 0;
