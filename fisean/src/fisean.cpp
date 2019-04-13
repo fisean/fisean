@@ -1,12 +1,13 @@
-#include <FL/Fl.H>
-#include <FL/Fl_Dial.H>
-#include <FL/Fl_Slider.H>
-#include <FL/Fl_Window.H>
-#include <FL/Fl_Hold_Browser.H>
-#include <FL/Fl_Group.H>
-#include <FL/Fl_Input.H>
-#include <FL/Fl_Button.H>
-#include <FL/Fl_Text_Display.H>
+#include <gnui/run.h>
+#include <gnui/Dial.h>
+#include <gnui/Slider.h>
+#include <gnui/Window.h>
+#include <gnui/Group.h>
+#include <gnui/Input.h>
+#include <gnui/Button.h>
+#include <gnui/TextDisplay.h>
+#include <gnui/Browser.h>
+#include <gnui/events.h>
 #include <arpa/inet.h>
 #include <iostream>
 #include <tuple>
@@ -16,36 +17,36 @@
 class Params
 {
   public:
-    Params(Fl_Text_Buffer *buff) { buffer = buff; }
+    Params(gnui::TextBuffer *buff) { buffer = buff; }
 
-    Fl_Text_Buffer *buffer;
+    gnui::TextBuffer *buffer;
 };
 
 
-Fl_Hold_Browser *bro = nullptr;
-Fl_Text_Display *chat = nullptr;
-Fl_Input *input = nullptr;
-Fl_Button *button = nullptr;
+gnui::Browser *bro = nullptr;
+gnui::TextDisplay *chat = nullptr;
+gnui::Input *input = nullptr;
+gnui::Button *button = nullptr;
 
 
-void selectGroup(Fl_Widget *, void*)
+void selectGroup(gnui::Widget *, void*)
 {
   auto line = bro->value();
-  if (line)
+  if (line != -1)
   {
-    Params *p = (Params *)bro->data(line);
-    chat->buffer(p->buffer);
+    Params *p = (Params *)bro->child(line);
+    // chat->buffer(p->buffer);
   }
   input->take_focus();
 }
 
 
-void sendMessage(Fl_Widget *, void *v)
+void sendMessage(gnui::Widget *, void *v)
 {
   auto line = bro->value();
   if (line)
   {
-    Params *p = (Params *)bro->data(line);
+    Params *p = (Params *)bro->child(line);
     p->buffer->append(input->value());
     p->buffer->append("\n");
     input->value("");
@@ -57,31 +58,31 @@ void sendMessage(Fl_Widget *, void *v)
 int main(int argc, char **argv)
 {
 
-  Fl_Window *window = new Fl_Window(800, 450);
+  gnui::Window *window = new gnui::Window(800, 450);
   window->begin();
   {
-    bro = new Fl_Hold_Browser(10, 10, 150, 430);
-    chat = new Fl_Text_Display(170, 10, 620, 390);
-    Fl_Group *grpInput = new Fl_Group(170,410,620,30);
+    bro = new gnui::Browser(10, 10, 150, 430);
+    chat = new gnui::TextDisplay(170, 10, 620, 390);
+    gnui::Group *grpInput = new gnui::Group(170,410,620,30);
     grpInput->begin();
     {
-      input = new Fl_Input(170,410,550,30);
-      button = new Fl_Button(730,410,60,30,"Send");
+      input = new gnui::Input(170,410,550,30);
+      button = new gnui::Button(730,410,60,30,"Send");
       grpInput->resizable(input);
     }
     grpInput->end();
     input->take_focus();
 
-    Fl_Text_Buffer *buff = new Fl_Text_Buffer();
+    gnui::TextBuffer *buff = new gnui::TextBuffer();
     chat->buffer(*buff);
     buff->append("Mekanix: cao\n");
     buff->append("Momo: oj\n");
     Params *p = new Params(buff);
     bro->add("Meka", p);
     button->callback(sendMessage, p);
-    button->shortcut(FL_Enter);
+    button->shortcut(gnui::ReturnKey);
 
-    buff = new Fl_Text_Buffer();
+    buff = new gnui::TextBuffer();
     p = new Params(buff);
     bro->add("Dervish", p);
     bro->callback(selectGroup);
@@ -90,5 +91,5 @@ int main(int argc, char **argv)
   }
   window->end();
   window->show(argc, argv);
-  return Fl::run();
+  return gnui::run();
 }
