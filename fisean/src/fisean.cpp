@@ -7,9 +7,9 @@
 #include <gnui/Button.h>
 #include <gnui/TextDisplay.h>
 #include <gnui/Browser.h>
+#include <gnui/Item.h>
 #include <gnui/events.h>
 #include <arpa/inet.h>
-#include <iostream>
 #include <string>
 
 
@@ -33,8 +33,9 @@ void selectGroup(gnui::Widget *, void*)
   auto line = bro->value();
   if (line != -1)
   {
-    Params *p = (Params *)bro->child(line);
-    chat->buffer(p->buffer); // <---- here
+    gnui::Item *i = (gnui::Item *)bro->child(line);
+    Params *p = (Params *)i->user_data();
+    chat->buffer(p->buffer);
   }
   input->take_focus();
 }
@@ -65,8 +66,8 @@ int main(int argc, char **argv)
     gnui::Group *grpInput = new gnui::Group(170,410,620,30);
     grpInput->begin();
     {
-      input = new gnui::Input(0,0,550,30);
-      button = new gnui::Button(560,0,60,30,"Send");
+      input = new gnui::Input(0, 0, 550, 30);
+      button = new gnui::Button(560, 0, 60, 30, "Send");
       grpInput->resizable(input);
     }
     grpInput->end();
