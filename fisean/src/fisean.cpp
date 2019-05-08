@@ -48,7 +48,7 @@ void sendMessage(gnui::Widget *, void *v)
   {
     gnui::Item *i = (gnui::Item *)bro->child(line);
     Params *p = (Params *)i->user_data();
-    p->buffer->append(input->value()); // <---- here
+    p->buffer->append(input->value());
     p->buffer->append("\n");
     input->value("");
   }
