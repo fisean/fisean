@@ -75,7 +75,6 @@ int main(int argc, char **argv)
     input->take_focus();
 
     gnui::TextBuffer *buff = new gnui::TextBuffer();
-    chat->buffer(*buff);
     buff->append("Mekanix: cao\n");
     buff->append("Momo: oj\n");
     Params *p = new Params(buff);
@@ -84,6 +83,7 @@ int main(int argc, char **argv)
     button->shortcut(gnui::ReturnKey);
 
     buff = new gnui::TextBuffer();
+    chat->buffer(*buff);
     p = new Params(buff);
     bro->add("Dervish", p);
     bro->callback(selectGroup);
