@@ -48,8 +48,11 @@ void sendMessage(gnui::Widget *, void *v)
   {
     gnui::Item *i = (gnui::Item *)bro->child(line);
     Params *p = (Params *)i->user_data();
-    p->buffer->append(input->value());
-    p->buffer->append("\n");
+    if(strlen(input->value()) != 0)
+    {
+      p->buffer->append(input->value());
+      p->buffer->append("\n");
+    }
     input->value("");
   }
   input->take_focus();
