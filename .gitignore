@@ -18,3 +18,4 @@ configure
 makeinclude.configured
 fisean/config.h
 src/fisean
+.vscode
