@@ -6,13 +6,13 @@ Contact::Contact(const std::string &dn,const std::string &un)
   displayName(dn);
   userName(un);
 }
-void Contact::displayName(const std::string &displayName)
+void Contact::displayName(const std::string &dn)
 {
-  _displayName=displayName;
+  _displayName=dn;
 }
-void Contact::userName(const std::string &userName)
+void Contact::userName(const std::string &un)
 {
-  _userName=userName;
+  _userName=un;
 }
 std::string Contact::displayName()
 {

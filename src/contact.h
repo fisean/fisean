@@ -5,9 +5,9 @@ class Contact
 {
   public:
     Contact(const std::string &dn,const std::string &un);
-    void displayName(const std::string &displayName);
+    void displayName(const std::string &dn);
     std::string displayName();
-    void userName(const std::string &userName);
+    void userName(const std::string &un);
     std::string userName();
 
   private:
