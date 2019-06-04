@@ -11,8 +11,8 @@
 #include <gnui/events.h>
 #include <arpa/inet.h>
 #include <string>
-#include <string.h>
 
+#include "contact.h"
 
 class Params
 {
@@ -79,17 +79,19 @@ int main(int argc, char **argv)
     input->take_focus();
 
     gnui::TextBuffer *buff = new gnui::TextBuffer();
-    buff->append("Mekanix: cao\n");
-    buff->append("Momo: oj\n");
+    // buff->append("Mekanix: cao\n");
+    // buff->append("Momo: oj\n");
     Params *p = new Params(buff);
-    bro->add("Meka", p);
+    contact meka("Mekanix","Goran");
+    bro->add(meka.getDisplayName().c_str(), p);
     button->callback(sendMessage, p);
     button->shortcut(gnui::ReturnKey);
 
     buff = new gnui::TextBuffer();
     chat->buffer(*buff);
     p = new Params(buff);
-    bro->add("Dervish", p);
+    contact dervish("Dervish","Rajko");
+    bro->add(dervish.getDisplayName().c_str(), p);
     bro->callback(selectGroup);
     bro->select(1);
     window->resizable(chat);
