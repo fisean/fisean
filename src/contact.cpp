@@ -1,10 +1,10 @@
 #include "contact.h"
 #include <string>
 
-Contact::Contact(std::string displayName,std::string userName)
+Contact::Contact(const std::string &dn,const std::string &un)
 {
-  this->displayName(displayName);
-  this->userName(userName);
+  displayName(dn);
+  userName(un);
 }
 void Contact::displayName(const std::string &displayName)
 {

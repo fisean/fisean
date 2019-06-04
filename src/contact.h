@@ -4,7 +4,7 @@
 class Contact
 {
   public:
-    Contact(std::string displayName,std::string userName);
+    Contact(const std::string &dn,const std::string &un);
     void displayName(const std::string &displayName);
     std::string displayName();
     void userName(const std::string &userName);
