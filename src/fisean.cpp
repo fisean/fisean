@@ -83,7 +83,7 @@ int main(int argc, char **argv)
     // buff->append("Momo: oj\n");
     Params *p = new Params(buff);
     Contact meka("Mekanix","Goran");
-    bro->add(meka.getDisplayName().c_str(), p);
+    bro->add(meka.displayName().data(), p);
     button->callback(sendMessage, p);
     button->shortcut(gnui::ReturnKey);
 
@@ -91,7 +91,7 @@ int main(int argc, char **argv)
     chat->buffer(*buff);
     p = new Params(buff);
     Contact dervish("Dervish","Rajko");
-    bro->add(dervish.getDisplayName().c_str(), p);
+    bro->add(dervish.displayName().data(), p);
     bro->callback(selectGroup);
     bro->select(1);
     window->resizable(chat);

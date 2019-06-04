@@ -5,10 +5,10 @@ class Contact
 {
   public:
     Contact(std::string displayName,std::string userName);
-    void setDisplayName(std::string displayName);
-    void setUserName(std::string userName);
-    std::string getDisplayName();
-    std::string getUserName();
+    void displayName(const std::string &displayName);
+    std::string displayName();
+    void userName(const std::string &userName);
+    std::string userName();
 
   private:
       std::string _displayName;
