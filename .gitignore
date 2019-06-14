@@ -1,5 +1,6 @@
 *.o
 *.so
+.ccls-cache
 .provisioned
 ansible/group_vars/all
 ansible/inventory/inventory
