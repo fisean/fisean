@@ -1,25 +1,27 @@
-#include <gnui/run.h>
+#include <arpa/inet.h>
+#include <gnui/Browser.h>
+#include <gnui/Button.h>
 #include <gnui/Dial.h>
-#include <gnui/Slider.h>
-#include <gnui/Window.h>
 #include <gnui/Group.h>
 #include <gnui/Input.h>
-#include <gnui/Button.h>
-#include <gnui/TextDisplay.h>
-#include <gnui/Browser.h>
 #include <gnui/Item.h>
+#include <gnui/Slider.h>
+#include <gnui/TextDisplay.h>
+#include <gnui/Window.h>
 #include <gnui/events.h>
-#include <arpa/inet.h>
+#include <gnui/run.h>
 #include <string>
 
 #include "contact.h"
 
+
+
 class Params
 {
-  public:
-    Params(gnui::TextBuffer *buff) { buffer = buff; }
+public:
+  Params(gnui::TextBuffer *buff) { buffer = buff; }
 
-    gnui::TextBuffer *buffer;
+  gnui::TextBuffer *buffer;
 };
 
 
@@ -29,7 +31,7 @@ gnui::Input *input = nullptr;
 gnui::Button *button = nullptr;
 
 
-void selectGroup(gnui::Widget *, void*)
+void selectGroup(gnui::Widget *, void *)
 {
   auto line = bro->value();
   if (line != -1)
@@ -49,7 +51,7 @@ void sendMessage(gnui::Widget *, void *v)
   {
     gnui::Item *i = (gnui::Item *)bro->child(line);
     Params *p = (Params *)i->user_data();
-    if(strlen(input->value()) != 0)
+    if (strlen(input->value()) != 0)
     {
       p->buffer->append(input->value());
       p->buffer->append("\n");
@@ -68,7 +70,7 @@ int main(int argc, char **argv)
   {
     bro = new gnui::Browser(10, 10, 150, 430);
     chat = new gnui::TextDisplay(170, 10, 620, 390);
-    gnui::Group *grpInput = new gnui::Group(170,410,620,30);
+    gnui::Group *grpInput = new gnui::Group(170, 410, 620, 30);
     grpInput->begin();
     {
       input = new gnui::Input(0, 0, 550, 30);
@@ -82,7 +84,7 @@ int main(int argc, char **argv)
     // buff->append("Mekanix: cao\n");
     // buff->append("Momo: oj\n");
     Params *p = new Params(buff);
-    Contact meka("Mekanix","Goran");
+    Contact meka("Mekanix", "Goran");
     bro->add(meka.displayName().data(), p);
     button->callback(sendMessage, p);
     button->shortcut(gnui::ReturnKey);
@@ -90,7 +92,7 @@ int main(int argc, char **argv)
     buff = new gnui::TextBuffer();
     chat->buffer(*buff);
     p = new Params(buff);
-    Contact dervish("Dervish","Rajko");
+    Contact dervish("Dervish", "Rajko");
     bro->add(dervish.displayName().data(), p);
     bro->callback(selectGroup);
     bro->select(1);

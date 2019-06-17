@@ -1,5 +1,3 @@
 BreakBeforeBraces: Allman
-MaxEmptyLinesToKeep: 3
+MaxEmptyLinesToKeep: 2
 IndentCaseLabels: true
-IndentWidth: 4
-AccessModifierOffset: -2
