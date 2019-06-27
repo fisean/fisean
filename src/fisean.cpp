@@ -15,7 +15,6 @@
 #include "contact.h"
 
 
-
 class Params
 {
 public:
@@ -55,8 +54,8 @@ void sendMessage(gnui::Widget *, void *v)
     {
       p->buffer->append(input->value());
       p->buffer->append("\n");
+      input->value("");
     }
-    input->value("");
   }
   input->take_focus();
 }
@@ -84,16 +83,16 @@ int main(int argc, char **argv)
     // buff->append("Mekanix: cao\n");
     // buff->append("Momo: oj\n");
     Params *p = new Params(buff);
-    Contact meka("Mekanix", "Goran");
-    bro->add(meka.displayName().data(), p);
+    Contact *meka = new Contact("Mekanix", "Goran");
+    bro->add(meka->displayName().data(),p);
     button->callback(sendMessage, p);
     button->shortcut(gnui::ReturnKey);
 
     buff = new gnui::TextBuffer();
     chat->buffer(*buff);
     p = new Params(buff);
-    Contact dervish("Dervish", "Rajko");
-    bro->add(dervish.displayName().data(), p);
+    Contact *dervish = new Contact ("Dervish", "Rajko");
+    bro->add(dervish->displayName().data(), p);
     bro->callback(selectGroup);
     bro->select(1);
     window->resizable(chat);
