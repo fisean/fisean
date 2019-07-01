@@ -1,7 +1,9 @@
-PROGRAM = fisean
+PROG_CXX = src/fisean
 OBJECTS = $(CXXFILES:.cpp=.o)
 CXXFLAGS != gnui-config --cxxflags
 CXXFLAGS += -I . -std=c++14
 CURLPP_LDFLAGS != curlpp-config --libs
 LDFLAGS != gnui-config --ldflags
 LDFLAGS += $(CURLPP_LDFLAGS)
+PREFIX ?= /usr/local
+CXXFLAGS += -fPIC
