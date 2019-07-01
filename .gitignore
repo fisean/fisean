@@ -1,16 +1,9 @@
 *.o
 *.so
+*.full
+*.debug
 .ccls-cache
-.provisioned
-ansible/group_vars/all
-ansible/inventory/inventory
-ansible/roles/*
-ansible/site.yml
-!ansible/roles/.keep
 build/
-cbsd.conf
-site.retry
-vars.mk
 matrix-client
 autom4te.cache/
 config.log
@@ -20,3 +13,4 @@ makeinclude.configured
 fisean/config.h
 src/fisean
 .vscode
+.depend
