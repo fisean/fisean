@@ -1,4 +1,4 @@
-PROGRAM = fisean
+PROG_CXX = src/fisean
 OBJECTS = $(CXXFILES:.cpp=.o)
 CXXFLAGS != gnui-config --cxxflags
 CXXFLAGS += -I . -std=c++14

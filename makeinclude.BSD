@@ -1,3 +1,2 @@
 SRCS != ls -1 src/*.cpp
-PROG_CXX = src/fisean
 MK_MAN = no

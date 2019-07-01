@@ -1,10 +1,10 @@
 CXXFILES = $(wildcard src/*.cpp)
 
-all: $(PROGRAM)
+all: $(PROG_CXX)
 
-$(PROGRAM): $(OBJECTS)
-	@echo -n "Linking $(PROGRAM) ... "
-	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o src/$(PROGRAM) $(LDFLAGS)
+$(PROG_CXX): $(OBJECTS)
+	@echo -n "Linking $(PROG_CXX) ... "
+	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o src/$(PROG_CXX) $(LDFLAGS)
 	@echo "done"
 
 .cpp.o:
@@ -13,10 +13,10 @@ $(PROGRAM): $(OBJECTS)
 	@echo "done"
 
 install:
-	install -m 0755 src/$(PROGRAM) $(DESTDIR)$(PREFIX)/bin
+	install -m 0755 src/$(PROG_CXX) $(DESTDIR)$(PREFIX)/bin
 
 clean:
-	rm -rf $(OBJECTS) src/$(PROGRAM)
+	rm -rf $(OBJECTS) src/$(PROG_CXX)
 
 distclean: clean
 	rm -rf config.log config.status configure makeinclude.configured
