@@ -5,7 +5,7 @@ all: $(PROG_CXX)
 
 $(PROG_CXX): $(OBJECTS)
 	@echo -n "Linking $(PROG_CXX) ... "
-	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o src/$(PROG_CXX) $(LDFLAGS)
+	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $(PROG_CXX) $(LDFLAGS)
 	@echo "done"
 
 .cpp.o:

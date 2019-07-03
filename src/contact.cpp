@@ -5,6 +5,7 @@ Contact::Contact(const std::string &dn,const std::string &un)
 {
   displayName(dn);
   userName(un);
+  buffer = new gnui::TextBuffer();
 }
 void Contact::displayName(const std::string &dn)
 {

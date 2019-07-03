@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <gnui/TextDisplay.h>
+
 
 class Contact
 {
@@ -9,8 +11,9 @@ class Contact
     std::string displayName();
     void userName(const std::string &un);
     std::string userName();
+    gnui::TextBuffer *buffer;
 
   private:
-      std::string _displayName;
-      std::string _userName;
+    std::string _displayName;
+    std::string _userName;
 };
