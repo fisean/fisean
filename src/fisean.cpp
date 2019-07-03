@@ -11,17 +11,10 @@
 #include <gnui/events.h>
 #include <gnui/run.h>
 #include <string>
+#include <string.h>
+#include <iostream>
 
 #include "contact.h"
-
-
-class Params
-{
-public:
-  Params(gnui::TextBuffer *buff) { buffer = buff; }
-
-  gnui::TextBuffer *buffer;
-};
 
 
 gnui::Browser *bro = nullptr;
@@ -36,7 +29,7 @@ void selectGroup(gnui::Widget *, void *)
   if (line != -1)
   {
     gnui::Item *i = (gnui::Item *)bro->child(line);
-    Params *p = (Params *)i->user_data();
+    Contact *p = (Contact *)i->user_data();
     chat->buffer(p->buffer);
   }
   input->take_focus();
@@ -49,7 +42,7 @@ void sendMessage(gnui::Widget *, void *v)
   if (line != -1)
   {
     gnui::Item *i = (gnui::Item *)bro->child(line);
-    Params *p = (Params *)i->user_data();
+    Contact *p = (Contact *)i->user_data();
     if (strlen(input->value()) != 0)
     {
       p->buffer->append(input->value());
@@ -79,22 +72,17 @@ int main(int argc, char **argv)
     grpInput->end();
     input->take_focus();
 
-    gnui::TextBuffer *buff = new gnui::TextBuffer();
-    // buff->append("Mekanix: cao\n");
-    // buff->append("Momo: oj\n");
-    Params *p = new Params(buff);
     Contact *meka = new Contact("Mekanix", "Goran");
-    bro->add(meka->displayName().data(),p);
-    button->callback(sendMessage, p);
-    button->shortcut(gnui::ReturnKey);
+    bro->add(meka->displayName().data(), meka);
 
-    buff = new gnui::TextBuffer();
-    chat->buffer(*buff);
-    p = new Params(buff);
     Contact *dervish = new Contact ("Dervish", "Rajko");
-    bro->add(dervish->displayName().data(), p);
+    bro->add(dervish->displayName().data(), dervish);
+
     bro->callback(selectGroup);
     bro->select(1);
+    chat->buffer(dervish->buffer);
+    button->callback(sendMessage);
+    button->shortcut(gnui::ReturnKey);
     window->resizable(chat);
   }
   window->end();
