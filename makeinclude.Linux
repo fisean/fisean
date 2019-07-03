@@ -1,4 +1,5 @@
 CXXFILES = $(wildcard src/*.cpp)
+OBJECTS = $(CXXFILES:.cpp=.o)
 
 all: $(PROG_CXX)
 
@@ -18,5 +19,3 @@ install:
 clean:
 	rm -rf $(OBJECTS) src/$(PROG_CXX)
 
-distclean: clean
-	rm -rf config.log config.status configure makeinclude.configured
