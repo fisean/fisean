@@ -18,5 +18,5 @@ install:
 	install -m 0755 src/$(PROG_CXX) $(DESTDIR)$(PREFIX)/bin
 
 clean:
-	rm -rf $(OBJECTS) src/$(PROG_CXX)
+	rm -rf $(OBJECTS) $(PROG_CXX)
 
