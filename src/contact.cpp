@@ -1,5 +1,7 @@
-#include "contact.h"
 #include <string>
+
+#include <fisean/contact.h>
+
 
 Contact::Contact(const std::string &dn,const std::string &un)
 {
