@@ -14,7 +14,7 @@
 #include <string.h>
 #include <iostream>
 
-#include "contact.h"
+#include <fisean/contact.h>
 
 
 gnui::Browser *bro = nullptr;
