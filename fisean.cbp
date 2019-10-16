@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="fisean" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="src/fisean" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="/home/dusan/Nextcloud/C++/CodeBlocks/fisean/" />
+				</Compiler>
+				<MakeCommands>
+					<Build command="$make" />
+					<CompileFile command="$make $file" />
+					<Clean command="$make clean" />
+					<DistClean command="$make -f $makefile distclean$target" />
+					<AskRebuildNeeded command="$make" />
+					<SilentBuild command="$make &gt; $(CMD_NULL)" />
+				</MakeCommands>
+			</Target>
+			<Target title="Release">
+				<Option output="src/fisean" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="BSDmakefile" />
+		<Unit filename="GNUmakefile" />
+		<Unit filename="LICENSE" />
+		<Unit filename="README.md" />
+		<Unit filename="config.log" />
+		<Unit filename="config.status" />
+		<Unit filename="configure" />
+		<Unit filename="configure.ac" />
+		<Unit filename="fisean/config.h" />
+		<Unit filename="fisean/config.h.in" />
+		<Unit filename="fisean/contact.h" />
+		<Unit filename="makeinclude.BSD" />
+		<Unit filename="makeinclude.Linux" />
+		<Unit filename="makeinclude.common" />
+		<Unit filename="makeinclude.configured" />
+		<Unit filename="makeinclude.configured.in" />
+		<Unit filename="matrixsockets.cpp" />
+		<Unit filename="src/contact.cpp" />
+		<Unit filename="src/fisean" />
+		<Unit filename="src/fisean.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
