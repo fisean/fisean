@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iostream>
 #include <list>
-#include <curlpp/curlpp.hpp>
+#include <curlpp/cURLpp.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Infos.hpp>
