@@ -10,6 +10,13 @@
 #include <gnui/Window.h>
 #include <gnui/events.h>
 #include <gnui/run.h>
+#include <gnui/MenuBar.h>
+#include <gnui/ItemGroup.h>
+#include <gnui/Item.h>
+#include <gnui/TabGroup.h>
+#include <gnui/CheckButton.h>
+#include <gnui/FileBrowser.h>
+#include <gnui/RadioButton.h>
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -54,15 +61,76 @@ void sendMessage(gnui::Widget *, void *v)
 }
 
 
+void cb_Close(gnui::Widget *item, void *data)
+{
+  auto w = (gnui::Window *)data;
+  w->hide();
+  delete w;
+}
+
+void cb_Preferences(gnui::Item*, void*) {
+  gnui::Window* w;
+   {
+    w = new gnui::Window(230, 125, "Preferences");
+    w->shortcut(0xff1b);
+    w->begin();
+    {
+      gnui::Button *b = new gnui::Button(45, 28, 131, 57, "Close");
+      b->callback(cb_Close, w);
+    }
+    w->end();
+    w->set_modal();
+    w->resizable(w);
+  }
+  w->show();
+
+}
+
+void cb_About(gnui::Widget*, void *) {
+  gnui::Window* w;
+   {
+    w = new gnui::Window(230, 125, "About");
+    w->shortcut(0xff1b);
+    w->begin();
+    {
+      gnui::Button *b = new gnui::Button(45, 28, 131, 57, "Close");
+      b->callback(cb_Close, w);
+    }
+    w->end();
+    w->set_modal();
+    w->resizable(w);
+  }
+  w->show();
+}
+
+
 int main(int argc, char **argv)
 {
 
-  gnui::Window *window = new gnui::Window(800, 450);
+  gnui::Window *window = new gnui::Window(800, 475);
   window->begin();
   {
-    bro = new gnui::Browser(10, 10, 150, 430);
-    chat = new gnui::TextDisplay(170, 10, 620, 390);
-    gnui::Group *grpInput = new gnui::Group(170, 410, 620, 30);
+    gnui::MenuBar* o = new gnui::MenuBar(0, 0, 230, 25);
+    o->shortcut(0xffe9);
+      o->begin();
+       {gnui::ItemGroup* o = new gnui::ItemGroup("Edit");
+        o->begin();
+         {gnui::Item* o = new gnui::Item("Preferences");
+          o->callback((gnui::Callback*)cb_Preferences);
+        }
+        o->end();
+      }
+       {gnui::ItemGroup* o = new gnui::ItemGroup("Help");
+        o->begin();
+         {gnui::Item* o = new gnui::Item("About");
+          o->callback(cb_About);
+        }
+        o->end();
+      }
+      o->end();
+    bro = new gnui::Browser(10, 35, 150, 430);
+    chat = new gnui::TextDisplay(170, 35, 620, 390);
+    gnui::Group *grpInput = new gnui::Group(170, 435, 620, 30);
     grpInput->begin();
     {
       input = new gnui::Input(0, 0, 550, 30);
